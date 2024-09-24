@@ -52,3 +52,11 @@ with col5:
                 title="Highly Cited Researchers List", hover_data=["Hici"],
                 template="gridon", height=500)
 st.plotly_chart(fig,use_container_width=True)
+
+
+with col5:
+    top_100_universities = df.nlargest(100, 'N&S')
+    fig = px.scatter(df, x = "N&S", y="PCP", color="Hici", labels={"Not significant": "PCP{}"},
+                title="Not Significant", hover_data=["N&S"],
+                template="gridon", height=500)
+st.plotly_chart(fig,use_container_width=True)
