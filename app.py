@@ -7,6 +7,7 @@ import altair as alt
 from PIL import Image
 import plotly.express as px
 import plotly.graph_objects as go 
+import plotly.figure_factory as ff
 
 #reading data data from excel 
 
@@ -49,7 +50,7 @@ st.plotly_chart(fig,use_container_width=True)
 
 with col5:
     fig = px.bar(df, x = "National/Regional Rank", y="Rank", labels={"Publication by National": "University Name{}"},
-                title="Publication by national", hover_data=["PUB"],
+                title="The rank of the university within its respective country or region", hover_data=["PUB"],
                 template="gridon", height=500)
 st.plotly_chart(fig,use_container_width=True)
 
@@ -63,7 +64,9 @@ st.plotly_chart(fig,use_container_width=True)
 
 with col5:
     top_100_universities = df.nlargest(100, 'N&S')
-    fig = px.scatter(df, x = "N&S", y="PCP", color="Hici", labels={"Not significant": "PCP{}"},
-                title="The score representing the number of research articles published in Nature and Science between 2019 and 2023.", hover_data=["N&S"],
+    fig = px.bubble(df, x = "N&S", y="PCP", color="Hici", labels={"Not significant": "PCP{}"},
+                title="The score representing the number of research articles published in Nature and Science between 2019 and 2023.", hover_data=["Alumni"],
                 template="gridon", height=500)
 st.plotly_chart(fig,use_container_width=True)
+
+
