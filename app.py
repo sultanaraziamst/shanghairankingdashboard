@@ -64,7 +64,7 @@ st.plotly_chart(fig,use_container_width=True)
 
 with col5:
     top_100_universities = df.nlargest(100, 'N&S')
-    fig = px.bubble(df, x = "N&S", y="PCP", color="Hici", labels={"Not significant": "PCP{}"},
+    fig = px.scatter(df, x = "N&S", y="PCP", color="Hici", labels={"Not significant": "PCP{}"},
                 title="The score representing the number of research articles published in Nature and Science between 2019 and 2023.", hover_data=["Alumni"],
                 template="gridon", height=500)
 st.plotly_chart(fig,use_container_width=True)
